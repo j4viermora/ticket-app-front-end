@@ -1,20 +1,18 @@
-import { useContext, useEffect } from "react"
-import { UIContext } from "../context/UIcontext"
+import { useContext, useEffect } from 'react'
+import { UiContext } from '../context/UiContext'
 
+export const useHideMenu = ( ocultar ) => {
 
+    const { showMenu, hideMenu } = useContext( UiContext );
 
-export const useHideMenu = ( value )  => {
-
-   const { hideMenu, showMenu } = useContext( UIContext )
-
-   useEffect( () => {
-
-        if ( value ){
+    useEffect(() => {
+        
+        if ( ocultar ) {
             hideMenu();
-        }else{
-            showMenu();
-        } 
+        } else {
+            showMenu()
+        }
 
-   }, [value,  showMenu, hideMenu ] )
+    }, [ ocultar, hideMenu, showMenu ])
 
 }
