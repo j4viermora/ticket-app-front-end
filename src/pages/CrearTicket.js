@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Col, Row, Typography } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons'
 import { useHideMenu } from '../hooks/useHideMenu';
+import { SocketContext } from '../context/SocketContext';
 
 const { Title, Text } = Typography;
 
@@ -10,9 +11,14 @@ export const CrearTicket = () => {
 
     useHideMenu(true);
 
+    const { socket } = useContext( SocketContext )
 
     const nuevoTicket = () => {
         console.log('nuevoTicket');
+
+        socket.emit( 'solicitar-ticket' )
+
+
     }
 
     return (
